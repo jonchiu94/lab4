@@ -15,12 +15,16 @@ class Student extends Model {
         if ($id == null) return;
 		foreach ($this->data as $key => $value){
 			if ($key == $id){
-				return $value['name'];
+				return 'Name: ' . $value['name'] . ', GPA: ' . $value['gpa'];
 			}
 		}
 	}
 
 	public function findAll(int $limit = 0, int $offset = 0){
-		return $data;
+        $arr = array();
+        foreach ($this->data as $key => $value){
+            array_push($arr, 'Name: ' . $value['name'] . ', GPA: ' . $value['gpa']);
+		}
+        return $arr;
 	}
 }

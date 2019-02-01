@@ -8,7 +8,9 @@
 </head>
 
 <body>
-    <p>"Student stuff here."</p>
+    <p>
+        <?php echo $list ?>
+    </p>
 </body>
 
 </html>

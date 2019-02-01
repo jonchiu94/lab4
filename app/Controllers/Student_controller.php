@@ -9,13 +9,19 @@ class Student_controller extends Controller {
     use ResponseTrait;
     
 	public function index(){
-        return view('student');
+        $student = new Student();
+        $res = $student->findAll();
+        $data = array();
+        $data["list"] = "";
+        foreach($res as $cur){
+            $data["list"] .= $cur . "</br>";
+        }
+        return view('student', $data);
 	}
 
 	public function show($id){
         $student = new Student();
         return $student->find($id);
-        //return view('student');
     }
 
     public function new(){
