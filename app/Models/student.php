@@ -1,4 +1,5 @@
 <?php
+
 namespace App\Models;
 use CodeIgniter\Model;
 
@@ -11,20 +12,13 @@ class Student extends Model {
 		'A01027608' => ['name' => 'Jonthan Chiu', 'gpa' => 53]
 	];
 
-	public function find($id = null){
-        if ($id == null) return;
-		foreach ($this->data as $key => $value){
-			if ($key == $id){
-				return 'Name: ' . $value['name'] . ', GPA: ' . $value['gpa'];
-			}
-		}
-	}
-
-	public function findAll(int $limit = 0, int $offset = 0){
-        $arr = array();
-        foreach ($this->data as $key => $value){
-            array_push($arr, 'Name: ' . $value['name'] . ', GPA: ' . $value['gpa']);
-		}
-        return $arr;
-	}
+    public function find($id = null)
+    {
+        return $this->data[$id];
+    }
+    
+    public function findAll(int $limit = 0, int $offset = 0)
+    {
+        return $this->data;
+    }
 }

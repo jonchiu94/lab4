@@ -1,30 +1,42 @@
 <?php 
 namespace App\Controllers;
+
 use CodeIgniter\Controller;
 use CodeIgniter\API\ResponseTrait;
-use App\Models\classes;
+use App\Models\Classes;
+
 class Class_controller extends Controller {
     use ResponseTrait;
     
-	public function index(){
-        $class = new Class();
-        $res = $class->findAll();
-        $data = array();
-        $data["list"] = "";
-        foreach($res as $cur){
-            $data["list"] .= $cur . "</br>";
-        }
-        return view('class', $data);
-	}
-	public function show($id){
-        $class = new Class();
-        return $class->find($id);
-    }
-    public function new(){
-        return $this->fail('Not implemented', 418);
+    public function index()
+    {
+        $model = new Classes();
+        
+        $class = $model->findAll();
+        return $this->respond($class, 200, 'Users Found');
     }
     
-    public function edit($id){
-        return $this->fail('Not implemented', 418);
+    public function show($id)
+    {
+        $model = new Classes();
+        
+        $class = $model->find($id);
+        return $this->respond($class, 200, 'User Found');
+    }
+    
+    public function new() {
+        return $this->failUnauthorized('Not implemented');
+    }
+    public function edit($id) {
+        return $this->failUnauthorized('Not implemented');
+    }
+    public function create() {
+        return $this->failUnauthorized('Not implemented');
+    }
+    public function update($id) {
+        return $this->failUnauthorized('Not implemented');
+    }
+    public function delete($id) {
+        return $this->failUnauthorized('Not implemented');
     }
 }
