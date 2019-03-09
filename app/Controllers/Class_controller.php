@@ -4,25 +4,24 @@ namespace App\Controllers;
 use CodeIgniter\Controller;
 use CodeIgniter\API\ResponseTrait;
 use App\Models\Classes;
-use App\Models\Student;
 
-class Student_controller extends Controller {
+class Class_controller extends Controller {
     use ResponseTrait;
     
     public function index()
     {
-        $model = new Student();
+        $model = new Classes();
         
-        $student = $model->findAll();
-        return $this->respond($student, 200, 'Users Found');
+        $class = $model->findAll();
+        return $this->respond($class, 200, 'Users Found');
     }
     
     public function show($id)
     {
-        $model = new Student();
+        $model = new Classes();
         
-        $student = $model->find($id);
-        return $this->respond($student, 200, 'User Found');
+        $class = $model->find($id);
+        return $this->respond($class, 200, 'User Found');
     }
     
     public function new() {

@@ -1,8 +1,9 @@
-<? php namespace App/Models;
+<?php
 
-use CodeIgniter\Database\ConnectionInterface;
+namespace App\Models;
+use CodeIgniter\Model;
 
-class classes
+class Classes extends Model
 {
     protected $data = [
         'Math'       => ['id'=>'MATH4092', 'description'=>'a math class for the intellectuals'],
@@ -10,20 +11,14 @@ class classes
         'Business'   => ['id'=>'BUSA4124', 'desctiption'=>'learn to shake hands']
     ];
     
-    public function find($id)
+    public function find($id = null)
     {
-        foreach($data as $entree)
-        {
-            if ($entree[0].$id == $id)
-            {
-                return $entree[0].$id;
-            }
-        }
+        return $this->data[$id];
     }
     
-    public function findAll()
+    public function findAll(int $limit = 0, int $offset = 0)
     {
-        return $data;
+        return $this->data;
     }
 }
     
